@@ -1,0 +1,166 @@
+
+
+#-*- mode: org -*-
+#+STARTUP: showall
+
+* Setup Package Manager
+#+begin_src emacs-lisp
+
+  (require 'package)
+  (setq package-enable-at-startup nil)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+  (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
+  (package-initialize)
+  (setq use-package-compute-statistics t)
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+  (eval-and-compile
+    (setq use-package-always-ensure t
+          use-package-expand-minimally t))
+  
+#+end_src
+
+* Install Theme Packages
+#+begin_src emacs-lisp
+
+  (if (not (package-installed-p 'tron-legacy-theme))
+      (package-install 'tron-legacy-theme))
+
+  (if (not (package-installed-p 'nordic-night-theme))
+      (package-install 'nordic-night-theme))
+
+  (if (not (package-installed-p 'zenburn-theme))
+      (package-install 'zenburn-theme))
+
+  (if (not (package-installed-p 'spacemacs-theme))
+      (package-install 'spacemacs-theme))
+
+  (if (not (package-installed-p 'gruvbox-theme))
+      (package-install 'gruvbox-theme))
+
+  (if (not (package-installed-p 'material-theme))
+      (package-install 'material-theme))
+
+  (if (not (package-installed-p 'ample-theme))
+      (package-install 'ample-theme))
+
+#+end_src
+
+* Install Programming Language Packages
+#+begin_src emacs-lisp
+
+  (use-package php-mode
+    :ensure t)
+
+  (use-package rjsx-mode
+    :ensure t
+    :config
+    (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode)))
+
+  (setq js2-mode-show-parse-errors nil
+        js2-mode-show-strict-warnings nil)
+
+  (use-package web-mode
+    :ensure t
+    :config
+      (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode)))
+
+  (use-package yasnippet
+    :ensure t
+    :hook ((text-mode
+            prog-mode
+            conf-mode
+            snippet-mode) . yas-minor-mode-on)
+    :init
+      (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+    :config
+      (yas-reload-all))
+
+#+end_src
+
+* Setup UI
+#+begin_src emacs-lisp
+  
+  (if window-system
+    (progn (scroll-bar-mode -1)
+           (tool-bar-mode -1)
+    (setq initial-frame-alist
+      (append initial-frame-alist
+        '((width  . 160)
+          (height . 48))))))
+
+  (menu-bar-mode -1)  
+
+#+end_src
+
+* Window Splitting
+#+begin_src emacs-lisp
+
+  (defun split-and-follow-horizontally ()
+    (interactive)
+    (split-window-below)
+    (balance-windows)
+    (other-window 1))
+  (global-set-key (kbd "C-x 3") 'split-and-follow-horizontally)
+
+  (defun split-and-follow-vertically ()
+    (interactive)
+    (split-window-right)
+    (balance-windows)
+    (other-window 1))
+  (global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
+
+  (defun list-buffers-and-follow ()
+    (interactive)
+    (list-buffers)
+    (other-window 1))
+  (global-set-key (kbd "C-x C-b") 'list-buffers-and-follow)
+  
+#+end_src
+
+* Backup and Lock Files
+#+begin_src emacs-lisp
+
+  (setq
+    backup-by-copying t                ; don't clobber symlinks
+    backup-directory-alist
+      '(("." . "~/.emacs.d/backups/"))  ; don't litter my fs tree
+    delete-old-versions t
+    kept-new-versions 6
+    kept-old-versions 2
+    version-control t)                ; use versioned backups
+
+  (setq lock-file-name-transforms
+    '(("\\`/.*/\\([^/]+\\)\\'" "~/.emacs.d/lockfiles/\\1" t)))
+  
+#+end_src
+
+* Indention
+#+begin_src emacs-lisp
+
+  (setq-default indent-tabs-mode nil)
+  (setq-default c-basic-offset 4)
+  
+#+end_src
+
+* Misc
+#+begin_src emacs-lisp
+
+  (electric-pair-mode 1)
+  (setq scroll-conservatively 1)
+  (global-display-line-numbers-mode 1)
+  
+#+end_src
+
+
+

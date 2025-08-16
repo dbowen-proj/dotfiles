@@ -1,0 +1,10 @@
+vim/.vim/plugged/
+vim/.vim/backup/*
+vim/.vim/swap/*
+vim/.vim/undo/*
+
+emacs/.emacs.d/*~
+emacs/.emacs.d/eln-cache/
+emacs/.emacs.d/elpa/
+emacs/.emacs.d/backups/*
+emacs/.emacs.d/auto-save_list/*

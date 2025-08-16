@@ -1,0 +1,57 @@
+snippet rfc "React fuctional component" b
+import React     from 'react'
+import ReactDOM  from 'react-dom'
+
+const $1 = ($2) {
+    $3
+
+    return(
+        $0
+    )
+}
+
+export default $1;
+
+if (document.getElementById('app')) {
+    ReactDOM.render(<$1 />, document.getElementById('app'));
+}
+endsnippet
+
+snippet sfc "React stateless functional component" b
+
+const $1 = ($2) => {
+    $3
+
+    return(
+	$4
+    )
+}
+
+export default $1
+endsnippet
+
+snippet useS "React useState" b
+const [$1, $2] = useState($0)
+endsnippet
+
+snippet useR "React useRef" b
+const $1 useRef($0)
+endsnippet
+
+snippet useE "React useEffect" b
+useEffect(() => {
+    $1
+})
+endsnippet
+
+snippet func "Defines a function" b
+function $1($2){
+    $0
+}
+endsnippet
+
+snippet afun "Dfines a arrow function" b
+const $1 = ($2) => {
+    $0
+}
+endsnippet

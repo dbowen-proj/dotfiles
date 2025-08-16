@@ -1,0 +1,24 @@
+snippet php
+	<?php
+
+	${0}
+
+	?>
+
+snippet connectinspection
+	include "../common/connectDB-inspection_system_dbh.php";
+	${0}
+
+snippet queryinspection
+	try{
+	    $query = $inspection_system -> prepair(
+	            "${1}");
+
+	    $query -> execute(array(${2}));
+
+	}catch(Exection $err){
+	    die("Error: " . $err -> getMessage());
+	}
+
+	${0}
+

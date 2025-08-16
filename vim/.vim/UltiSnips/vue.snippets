@@ -1,0 +1,290 @@
+snippet newcomponent
+    <template>
+        <v-container>
+            ${0}
+        </v-container>
+    </template>
+
+    <script>
+        export default{
+            name: ${1},
+	    props: {
+
+	    },
+	    data: () => ({
+	    
+	    }),
+	    methods:{
+
+	    }
+        }
+    </script>
+
+    <style scoped>
+          
+    </style>
+endsnippet
+
+snippet v-card
+    <v-card
+        ${1}
+    >
+        ${2}
+    </v-card>
+   ${0}
+endsnippet
+
+snippet v-card-title
+    <v-card-title
+        ${1}
+    >
+        ${2}
+    </v-card-title>
+    ${0}
+endsnippet
+
+snippet v-card-text
+    <v-card-text
+        ${1}
+    >
+        ${2}
+    </v-card-text>
+    ${0}
+endsnippet
+
+snippet v-card-actions
+    <v-card-actions
+        ${1}
+    >
+        ${2}
+    </v-card-actions>
+    ${0}
+endsnippet
+
+snippet v-data-table
+    <v-data-table
+        :headers="${1}"
+        :items="${2}"
+    >
+        ${3}
+    </v-data-table>
+    ${0}
+endsnippet
+
+snippet v-row
+    <v-row>
+        ${1}
+    </v-row>
+    ${0}
+endsnippet
+
+snippet v-col
+    <v-col
+        cols="${1}"
+    >
+        ${2}
+    </v-col>
+    ${0}
+endsnippet
+
+snippet v-btn
+    <v-btn
+        @click="${1}"
+
+    >
+        ${2}
+    </v-btn>
+    ${0}
+endsnippet
+
+snippet v-icon
+    <v-icon
+        ${1}
+    >
+        ${2}
+    </v-icon>
+    ${0}
+endsnippet
+
+snippet v-text-field
+    <v-text-feild
+        label="${1}"
+        v-model="${2}
+    >
+    </v-text-feild>
+    ${0}
+endsnippet
+
+snippet v-select
+    <v-select
+        label="${1}
+        v-model="${2}"
+    >
+    </v-select>
+    ${0}
+    >
+endsnippet
+
+snippet v-textarea
+    <v-textarea
+        label="${1}
+        v-model="${2}
+    >
+    </v-texteara>
+    ${0}
+endsnippet
+
+snippet v-dialog
+    <v-dialog
+        width="${1}
+    >
+        ${2}
+    </v-dialog>
+    ${0}
+endsnippet
+
+snippet v-alert
+    <v-alert
+        type="${1}
+    >
+        ${2}
+    </v-alert>
+    ${0}
+endsnippet
+
+snippet v-app-bar
+    <v-app-bar
+        ${1}
+    >
+        ${2}
+    </v-app-bar>
+    ${0}
+endsnippet
+
+snippet v-app-bar-nav-icon
+    <v-app-bar-nav-icon
+        ${1}
+    >
+    </v-app-bar-nav-icon
+    ${0}
+endsnippet
+
+snippet v-toolbar
+    <v-toolbar
+        ${1}
+    >
+        ${2}
+    </v-toolbar
+    ${0}
+endsnippet
+
+snippet v-toolbar-title
+    <v-toolbar-title
+        ${1}
+    >
+        ${2}
+    </v-toolbar-title>
+    ${0}
+endsnippet
+
+snippet v-spacer
+    <v-spacer></v-spacer>
+    ${0}
+endsnippet
+
+snippet v-divider
+    <v-divider></v-divider>
+    ${0}
+endsnippet
+
+snippet v-footer
+    <v-footer
+        padless
+    >
+        ${1}
+    </v-footer>
+    ${0}
+endsnippet
+
+snippet v-checkbox
+    <v-checkbox
+        label="${1}"
+        value="${2}
+        v-model=${3}
+        hide-details
+    >
+    </v-checkbox>
+    ${0}
+endsnippet
+
+snippet v-form
+    <v-form
+        model="${1}
+    >
+        ${2}
+    </v-form>
+    ${0}
+endsnippet
+
+snippet v-list
+    <v-list flat>
+        <v-subheader>${1}</v-subheader>
+        <v-list-item-group
+            ${2}
+        >
+        <v-list-item
+            v-for="(item, i) in ${3}"
+            :key="i"
+        >
+            <v-list-item-icon>
+                <v-icon
+		    v-text="item.icon"
+                ></v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+                <v-list-item-title
+		    v-text="item.text"
+                ></v-list-item-title>
+            </v-list-item-content>
+        </v-list-item>
+    </v-list>
+    ${0}
+endsnippet
+
+snippet v-switch
+    <v-switch
+        label="#{1}
+        v-model="${2}
+    >
+    </v-switch>
+    ${0}
+endsnippet
+
+snippet v-menu
+    <v-menu
+        ${1:bottom}
+    >
+        ${2}
+    </v-menu>	
+    ${0}
+endsnippet
+
+snippet v-navigation-drawer
+    <v-navigation-drawer
+        ${1}
+    >
+        ${2}
+    </v-navigation-drawer>
+    ${0}
+endsnippet
+
+snippet treeview
+    <v-treeview
+        activatable
+        color="${1}"
+        :items="$${2}"
+    ></v-treeview>
+    ${0}
+endsnippet
+
+
