@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# this is a simple config for herbstluftwm
+
+hc() {
+    herbstclient "$@"
+}
+
+hc emit_hook reload
+
+# set up herbst
+source ~/.config/herbstluftwm/keybindings.sh
+source ~/.config/herbstluftwm/mousebindings.sh
+source ~/.config/herbstluftwm/theme.sh
+source ~/.config/herbstluftwm/rules.sh
+source ~/.config/herbstluftwm/workspaces.sh
+
+hc unlock
+
+# set up monitors
+hc spawn xrandr --output DisplayPort-2 --primary --mode 1920x1080 --output HDMI-A-0 --left-of DisplayPort-2 --mode 1920x1080 --output DisplayPort-1 --right-of DisplayPort-2 --mode 1920x1080 
+hc detect_monitors
+
+# start panael
+panel=~/.config/herbstluftwm/panel.sh
+[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
+for monitor in $(hc list_monitors | cut -d: -f1) ; do
+    # start it on each monitor
+    "$panel" "$monitor" &
+done
+
+# start apps
+source ~/.config/herbstluftwm/spawn-apps.sh
